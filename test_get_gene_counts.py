@@ -4,7 +4,7 @@ import random
 import os
 
 
-class TestBinaryTree(unittest.TestCase):
+class TestGetGeneCounts(unittest.TestCase):
     def test_basic_counts(self):
         file_name = "./gene_counts.data"
         gene_name = "SDHB"
