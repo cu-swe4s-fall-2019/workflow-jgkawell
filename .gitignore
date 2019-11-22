@@ -1,4 +1,7 @@
 *.pyc
 *.data
 *.out
+*.txt
+*.log
+.snakemake
 .vscode
