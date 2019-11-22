@@ -84,7 +84,8 @@ def main():
 
     # Alert user to finished state
     if success:
-        print("Finished successfully and wrote results to: %s" % args.out_file_name)
+        print("Finished successfully and wrote results to: %s" %
+              args.out_file_name)
     else:
         print("Did not complete successfully.")
         sys.exit(1)

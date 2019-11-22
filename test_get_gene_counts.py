@@ -6,12 +6,13 @@ import os
 
 class TestBinaryTree(unittest.TestCase):
     def test_basic_counts(self):
-        file_name = "./GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz"
+        file_name = "./gene_counts.data"
         gene_name = "SDHB"
         out_file_name = "counts.out"
 
         # Check return status
-        self.assertTrue(get_gene_counts.create_file(file_name, gene_name, out_file_name))
+        self.assertTrue(get_gene_counts.create_file(
+            file_name, gene_name, out_file_name))
         # Check out file existence
         self.assertTrue(os.path.exists(out_file_name))
         # Check first line matches expected value
@@ -27,17 +28,19 @@ class TestBinaryTree(unittest.TestCase):
         out_file_name = "counts.out"
 
         # Check return status
-        self.assertFalse(get_gene_counts.create_file(file_name, gene_name, out_file_name))
+        self.assertFalse(get_gene_counts.create_file(
+            file_name, gene_name, out_file_name))
         # Check out file existence
         self.assertFalse(os.path.exists(out_file_name))
 
     def test_bad_gene_name(self):
-        file_name = "./GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz"
+        file_name = "./gene_counts.data"
         gene_name = "NOT_A_GENE"
         out_file_name = "counts.out"
 
         # Check return status
-        self.assertTrue(get_gene_counts.create_file(file_name, gene_name, out_file_name))
+        self.assertTrue(get_gene_counts.create_file(
+            file_name, gene_name, out_file_name))
         # Check out file existence
         self.assertTrue(os.path.exists(out_file_name))
         # Check first line matches expected value
