@@ -20,3 +20,4 @@ script:
     - pycodestyle *.py
     - python test_get_gene_counts.py
     - python test_get_tissue_samples.py
+    - snakemake
