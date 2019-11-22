@@ -13,7 +13,10 @@ before_install:
     - conda install --yes python=3.6
     - wget https://github.com/swe4s/lectures/blob/master/data_integration/gtex/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz?raw=true
     - mv GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz?raw=true gene_counts.data
+    - wget https://storage.googleapis.com/gtex_analysis_v8/annotations/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+    - mv GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt sample_attributes.data
 
 script:
     - pycodestyle *.py
     - python test_get_gene_counts.py
+    - python test_get_tissue_samples.py
