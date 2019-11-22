@@ -16,4 +16,4 @@ before_install:
 
 script:
     - pycodestyle *.py
-    - python test_gene_counts.py
+    - python test_get_gene_counts.py
