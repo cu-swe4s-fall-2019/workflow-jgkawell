@@ -8,9 +8,9 @@ before_install:
     - conda config --add channels r
     - conda create --yes -n test
     - conda activate test
-    - conda install -y pycodestyle
-    - conda install -y python-dateutil
     - conda install --yes python=3.6
+    - conda install -y pycodestyle
+    - conda install -y matplotlib
     - wget https://github.com/swe4s/lectures/blob/master/data_integration/gtex/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz?raw=true
     - mv GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz?raw=true gene_counts.data
     - wget https://storage.googleapis.com/gtex_analysis_v8/annotations/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
@@ -20,3 +20,14 @@ script:
     - pycodestyle *.py
     - python test_get_gene_counts.py
     - python test_get_tissue_samples.py
+    - python get_tissue_samples.py --file_name sample_attributes.data --tissue_name Brain --out_file_name Brain_samples.txt
+    - python get_tissue_samples.py --file_name sample_attributes.data --tissue_name Heart --out_file_name Heart_samples.txt
+    - python get_tissue_samples.py --file_name sample_attributes.data --tissue_name Blood --out_file_name Blood_samples.txt
+    - python get_tissue_samples.py --file_name sample_attributes.data --tissue_name Skin --out_file_name Skin_samples.txt
+    - python get_gene_counts.py --file_name gene_counts.data --gene_name SDHB --out_file_name SDHB_counts.txt
+    - python get_gene_counts.py --file_name gene_counts.data --gene_name MEN1 --out_file_name MEN1_counts.txt
+    - python get_gene_counts.py --file_name gene_counts.data --gene_name KCNH2 --out_file_name KCNH2_counts.txt
+    - python get_gene_counts.py --file_name gene_counts.data --gene_name MSH2 --out_file_name MSH2_counts.txt
+    - python get_gene_counts.py --file_name gene_counts.data --gene_name MYL2 --out_file_name MYL2_counts.txt
+    - python get_gene_counts.py --file_name gene_counts.data --gene_name BRCA2 --out_file_name BRCA2_counts.txt
+    - python box.py --tissues Brain Heart Blood Skin --genes SDHB MEN1 KCNH2 MSH2 MYL2 BRCA2 --out_file_name test.png
